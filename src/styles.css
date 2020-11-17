@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #141414;
+}
+.bg-dark {
+    background-color: #141414 !important;
+}
+.clr-primary {
+    color: #e50914 !important;
+}
+.pointer {
+    cursor: pointer;
+}
+.img-blur {
+    backdrop-filter: blur(1px);
+}

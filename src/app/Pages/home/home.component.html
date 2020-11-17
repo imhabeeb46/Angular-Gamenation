@@ -1,0 +1,35 @@
+<div class="row mb-3">
+    <ng-container *ngIf="!isLoading; else elseBlock">
+        <div class="col-sm-3 py-2" *ngFor="let game of gamesList">
+            <div class="card pointer text-white bg-dark" (click)="viewGame(game.id)">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img class="card-img embed-responsive-item" [src]="game.background_image" alt="Card image">
+                    <div class="card-img-overlay img-blur d-flex">
+                        <div class="card-body align-items-center d-flex justify-content-center">
+                            <h3>{{game.name}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #elseBlock>
+        <div class="col-sm-3 py-2" *ngFor="let loop of loop">
+            <div class="card text-white bg-dark">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <div class="embed-responsive-item">
+                        <ngx-skeleton-loader count="1" animation="progress-dark" appearance="circle" [theme]="{
+                          'border-radius': '0px',
+                          height: '100%',
+                          width: '100%',
+                          'background-color': '#323232',
+                          'animation-duration': '2s'
+                        }">
+                        </ngx-skeleton-loader>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+</div>

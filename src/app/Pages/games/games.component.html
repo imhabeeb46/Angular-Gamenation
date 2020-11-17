@@ -1,0 +1,41 @@
+<div class="row mt-3">
+    <div class="col-xs-12 col-md-8 order-1 mb-3">
+        <div class="card text-white bg-dark">
+            <div class="embed-responsive embed-responsive-21by9 mb-3">
+                <img class="card-img embed-responsive-item" [src]="gameDetails?.background_image" alt="Game Image">
+            </div>
+            <h3 class="card-title">{{gameDetails?.name}}</h3>
+            <p class="card-text">Released On : {{gameDetails?.released | date:'dd-MM-yyyy'}}</p>
+            <p class="card-text">Rating : {{gameDetails?.rating}}</p>
+            <p class="card-text">Platforms Supported :
+                <ng-container *ngFor="let platform of gameDetails?.platforms;let isLast=last">
+                    {{platform.platform.name}} {{isLast ? '' : ', '}}
+                </ng-container>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 mt-3" *ngFor="let store of gameDetails?.stores">
+                <div class="card pointer" (click)="redirectToStore(store.url_en)">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <img class="card-img embed-responsive-item" [src]="store.store.image_background"
+                            alt="Store Image">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-dark text-center">{{store.store.name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-4 order-2" *ngIf="gameDetails?.short_screenshots">
+        <h3 class="card-title text-white">Screenshots:</h3>
+        <div class="col py-2">
+            <div class="card text-white bg-dark mb-3"
+                *ngFor="let screenshot of gameDetails?.short_screenshots | slice:0:3">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img class="card-img embed-responsive-item" [src]="screenshot.image" alt="Screenshot">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
